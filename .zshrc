@@ -112,6 +112,18 @@ alias nrd='npm run dev'
 alias pint='vendor/bin/pint'
 alias reck='vendor/bin/rector'
 alias vendro='bin/build_helper'
+alias battery_stats="sudo tlp-stat -b"
+alias home="cd ~"
+alias pstan="vendor/bin/phpstan analyse "
+alias tink="pa tinker"
+alias seed="pa db:seed"
+
+alias php74="sudo update-alternatives --set php /usr/bin/php7.4; sudo systemctl stop php8.1-fpm.service; sudo systemctl stop php8.0-fpm.service; sudo systemctl start php7.4-fpm.service;"
+alias php80="sudo update-alternatives --set php /usr/bin/php8.0; sudo systemctl stop php8.1-fpm.service; sudo systemctl stop php7.4-fpm.service; sudo systemctl start php8.0-fpm.service;"
+alias php81="sudo update-alternatives --set php /usr/bin/php8.1; sudo systemctl stop php8.0-fpm.service; sudo systemctl stop php7.4-fpm.service; sudo systemctl start php8.1-fpm.service;"
+alias php82="sudo update-alternatives --set php /usr/bin/php8.2"
+alias php83="sudo update-alternatives --set php /usr/bin/php8.3"
+alias php84="sudo update-alternatives --set php /usr/bin/php8.4"
 
 gpl() {
   git pull origin "$@"
