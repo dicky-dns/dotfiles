@@ -112,6 +112,7 @@ alias nrd='npm run dev'
 alias pint='vendor/bin/pint'
 alias reck='vendor/bin/rector'
 alias vendro='bin/build_helper'
+alias vendrojs='npm run format; npm run lint; npm run type-check'
 alias battery_stats="sudo tlp-stat -b"
 alias home="cd ~"
 alias pstan="vendor/bin/phpstan analyse "
