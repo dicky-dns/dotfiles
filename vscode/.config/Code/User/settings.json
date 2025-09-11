@@ -1,19 +1,49 @@
 {
-"window.titleBarStyle": "native",
-
-"vscode_custom_css.imports": [
-  "file:///home/dickydns/.vscode/css/custom.css"
-],
-"window.menuBarVisibility": "toggle",
-"chat.commandCenter.enabled": false,
-"workbench.navigationControl.enabled": false,
-"workbench.activityBar.location": "top",
-"workbench.layoutControl.enabled": false,
-"window.commandCenter": false,
-"workbench.editor.enablePreview": false,
-"window.customTitleBarVisibility": "never",
-"git.confirmSync": false
-
-
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "workbench.editor.empty.hint": "hidden",
+    "window.titleBarStyle": "native",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": true,
+        "php": true
+    },
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.location": "top",
+    "workbench.panel.showLabels": false,
+    "git.ignoreRebaseWarning": true,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "vscode-great-icons",
+    "workbench.editor.enablePreview": false,
+    "git.confirmSync": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.navigationControl.enabled": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.chat.editor.temporalContext.enabled": true,
+    "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "editor.codeActions.triggerOnFocusChange": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.suggestOnTriggerCharacters": true,
+    "workbench.editorLargeFileConfirmation": 3024,
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true,
+        "/tmp/postman-collections-post-response.instructions.md": true,
+        "/tmp/postman-collections-pre-request.instructions.md": true,
+        "/tmp/postman-folder-post-response.instructions.md": true,
+        "/tmp/postman-folder-pre-request.instructions.md": true,
+        "/tmp/postman-http-request-post-response.instructions.md": true,
+        "/tmp/postman-http-request-pre-request.instructions.md": true
+    },
+    "extensions.ignoreRecommendations": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "window.menuBarVisibility": "toggle"
 
 }
