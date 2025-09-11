@@ -1,0 +1,21 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+alt+up",
+        "command": "editor.action.sortLinesAscending"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "editor.action.sortLinesDescending"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.panel.chat",
+        "when": "workbench.panel.chat.view.copilot.active"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "-workbench.panel.chat",
+        "when": "workbench.panel.chat.view.copilot.active"
+    }
+]
