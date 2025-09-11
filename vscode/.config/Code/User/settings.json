@@ -1,0 +1,19 @@
+{
+"window.titleBarStyle": "native",
+
+"vscode_custom_css.imports": [
+  "file:///home/dickydns/.vscode/css/custom.css"
+],
+"window.menuBarVisibility": "toggle",
+"chat.commandCenter.enabled": false,
+"workbench.navigationControl.enabled": false,
+"workbench.activityBar.location": "top",
+"workbench.layoutControl.enabled": false,
+"window.commandCenter": false,
+"workbench.editor.enablePreview": false,
+"window.customTitleBarVisibility": "never",
+"git.confirmSync": false
+
+
+
+}
