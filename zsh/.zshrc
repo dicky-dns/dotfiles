@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,25 +106,15 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Aliases
-alias mg_f='php artisan migrate:fresh'
+alias mgf='php artisan migrate:fresh'
 
 alias nrd='npm run dev'
 alias pint='vendor/bin/pint'
 alias reck='vendor/bin/rector'
 alias vendro='bin/build_helper'
 alias vendrojs='npm run format; npm run lint; npm run type-check'
-alias battery_stats="sudo tlp-stat -b"
-alias home="cd ~"
-alias pstan="vendor/bin/phpstan analyse "
-alias tink="pa tinker"
-alias seed="pa db:seed"
-
-alias php74="sudo update-alternatives --set php /usr/bin/php7.4; sudo systemctl stop php8.1-fpm.service; sudo systemctl stop php8.0-fpm.service; sudo systemctl start php7.4-fpm.service;"
-alias php80="sudo update-alternatives --set php /usr/bin/php8.0; sudo systemctl stop php8.1-fpm.service; sudo systemctl stop php7.4-fpm.service; sudo systemctl start php8.0-fpm.service;"
-alias php81="sudo update-alternatives --set php /usr/bin/php8.1; sudo systemctl stop php8.0-fpm.service; sudo systemctl stop php7.4-fpm.service; sudo systemctl start php8.1-fpm.service;"
-alias php82="sudo update-alternatives --set php /usr/bin/php8.2"
-alias php83="sudo update-alternatives --set php /usr/bin/php8.3"
-alias php84="sudo update-alternatives --set php /usr/bin/php8.4"
+alias changephp='sudo update-alternatives --config php'
+alias brp='bin/rebuild_roles_and_permissions'
 
 gpl() {
   git pull origin "$@"
@@ -138,16 +128,80 @@ mg() {
   php artisan migrate
 }
 
-mg_mk() {
+mgmk() {
   php artisan make:migration "$@"
 }
 
-mg_rb() {
+mgrb() {
   php artisan migrate:rollback "$@"
 }
 
 p() {
   php artisan test "$@"
+}
+
+# usage:
+#   pgrestore -d <database> -o <owner> <dump-file>
+# default database = core_api_production
+# default owner    = postgres
+
+#default example = pgrestore dnc_production_2025-09-05_11-30-42.dump
+#override DB =  pgrestore -d mydb dnc_production_2025-09-05_11-30-42.dump
+#override DB + owner = pgrestore -d mydb -o myowner dnc_production_2025-09-05_11-30-42.dump
+
+# usage:
+#   pgrestore -d <database> -o <owner> <dump-file>
+# default database = core_api_production
+# default owner    = postgres
+pgrestore() {
+  local db="core_api_production"
+  local owner="postgres"
+  local OPTIND opt
+
+  # parse flag -d dan -o
+  while getopts ":d:o:" opt; do
+    case "$opt" in
+      d) db="$OPTARG" ;;
+      o) owner="$OPTARG" ;;
+      *) echo "Usage: pgrestore [-d database] [-o owner] <dump-file>"; return 1 ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+  local dump="${1:?Usage: pgrestore [-d database] [-o owner] <dump-file>}"
+
+  echo "Restoring to DB=$db OWNER=$owner DUMP=$dump"
+
+  # 1) block koneksi & kill sessions
+  sudo -u postgres psql -qAt -d postgres -v ON_ERROR_STOP=1 <<SQL >/dev/null 2>&1
+DO \$\$
+BEGIN
+  IF EXISTS (SELECT 1 FROM pg_database WHERE datname='${db}') THEN
+    ALTER DATABASE "${db}" WITH ALLOW_CONNECTIONS = false;
+    REVOKE CONNECT ON DATABASE "${db}" FROM PUBLIC;
+    PERFORM pg_terminate_backend(pid)
+    FROM pg_stat_activity
+    WHERE datname='${db}' AND pid <> pg_backend_pid();
+  END IF;
+END
+\$\$;
+SQL
+
+  # 2) drop
+  sudo -u postgres dropdb "${db}" 2>/dev/null || true
+
+  # 3) create
+  sudo -u postgres createdb -O "${owner}" "${db}" || return 1
+
+  # 4) restore
+  sudo -u postgres pg_restore \
+    --clean --if-exists --no-owner --no-privileges \
+    --single-transaction --exit-on-error \
+    -d "${db}" "${dump}"
+
+  # 5) buka koneksi lagi
+  sudo -u postgres psql -qAt -d postgres -v ON_ERROR_STOP=1 -c \
+    "ALTER DATABASE \"${db}\" WITH ALLOW_CONNECTIONS = true;" >/dev/null 2>&1
 }
 
 export NVM_DIR="$HOME/.nvm"
