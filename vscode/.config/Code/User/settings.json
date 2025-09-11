@@ -4,7 +4,7 @@
     "editor.fontLigatures": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "workbench.editor.empty.hint": "hidden",
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "github.copilot.enable": {
         "*": true,
         "plaintext": true,
