@@ -1,7 +1,10 @@
 {
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
-    "editor.fontLigatures": true,
+    // "editor.fontFamily": "Fira Code",
+    // "editor.fontLigatures": true,
+"editor.fontFamily": "FiraCode Nerd Font, JetBrains Mono, monospace",
+"editor.fontLigatures": true,
+
     "diffEditor.ignoreTrimWhitespace": true,
     "workbench.editor.empty.hint": "hidden",
     "window.titleBarStyle": "custom",
@@ -19,7 +22,6 @@
     "workbench.panel.showLabels": false,
     "git.ignoreRebaseWarning": true,
     "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "vscode-great-icons",
     "workbench.editor.enablePreview": false,
     "git.confirmSync": false,
     "workbench.editor.editorActionsLocation": "titleBar",
@@ -44,6 +46,7 @@
     },
     "extensions.ignoreRecommendations": true,
     "diffEditor.hideUnchangedRegions.enabled": true,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "chat.commandCenter.enabled": false
 
 }

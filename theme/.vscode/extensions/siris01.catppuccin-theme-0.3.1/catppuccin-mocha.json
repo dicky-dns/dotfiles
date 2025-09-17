@@ -229,7 +229,14 @@
 		"terminal.ansiBrightBlue": "#89b4fa",
 		"terminal.ansiBrightMagenta": "#cba6f7",
 		"terminal.ansiBrightCyan": "#94e2d5",
-		"terminal.ansiBrightWhite": "#ffffff"
+		"terminal.ansiBrightWhite": "#ffffff",
+
+		"menu.background": "#201f22",
+		"menu.foreground": "#cdd6f4",
+		"menu.border": "#11111b",
+		"menu.selectionBackground": "#1b1b1d",
+		"menu.selectionForeground": "#cdd6f4",
+		"menu.separatorBackground": "#31324459"
 	},
 	"tokenColors": [
 		{
