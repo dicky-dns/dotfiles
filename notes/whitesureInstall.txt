@@ -1,0 +1,86 @@
+install whitesur theme
+
+sudo apt update                                                 
+sudo apt install git gtk2-engines-murrine gtk2-engines-pixbuf sassc -y
+
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git 
+cd WhiteSur-gtk-theme
+
+./install.sh   
+
+---- optional cursor && icon
+
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+cd WhiteSur-icon-theme
+./install.sh
+
+cd ..
+git clone https://github.com/vinceliuice/WhiteSur-cursors.git
+cd WhiteSur-cursors
+./install.sh
+
+
+
+paksa jadi whitesur
+
+masalahnya jelas: gtk.css & gtk-dark.css lu itu symlink ke gtk-Dark.css yang isinya Adwaita, jadi Nautilus/Tweaks bakal tetep ngegondrong Adwaita. Kita putusin rantainya, bikin file asli yang import WhiteSur langsung.
+
+Gas ikutin ini, copas aja berurutan:
+
+1) Putusin symlink & beresin file Adwaita
+# backup dulu
+mkdir -p ~/.config/gtk-4.0/backup
+cp -f ~/.config/gtk-4.0/gtk-Dark.css ~/.config/gtk-4.0/backup/gtk-Dark.css.bak 2>/dev/null || true
+cp -f ~/.config/gtk-4.0/gtk-Light.css ~/.config/gtk-4.0/backup/gtk-Light.css.bak 2>/dev/null || true
+
+# hapus symlink & file generator Adwaita
+rm -f ~/.config/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk-dark.css
+rm -f ~/.config/gtk-4.0/gtk-Dark.css ~/.config/gtk-4.0/gtk-Light.css
+
+2) Tulis file biasa (bukan symlink) yg nge-import WhiteSur
+cat > ~/.config/gtk-4.0/gtk.css <<'CSS'
+@import url("/usr/share/themes/WhiteSur-Dark/gtk-4.0/gtk.css");
+@import url("/home/$USER/.themes/WhiteSur-Dark/gtk-4.0/gtk.css");
+CSS
+
+cat > ~/.config/gtk-4.0/gtk-dark.css <<'CSS'
+@import url("/usr/share/themes/WhiteSur-Dark/gtk-4.0/gtk-dark.css");
+@import url("/home/$USER/.themes/WhiteSur-Dark/gtk-4.0/gtk-dark.css");
+CSS
+
+
+Catatan: gtk.css cuma import yang normal, gtk-dark.css cuma import yang dark. Jangan dicampur.
+
+3) (Opsional) pastikan prefer dark
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+4) Logout → login (lu di Wayland, wajib)
+
+Abis login, buka Files (Nautilus) & Tweaks. Harusnya udah WhiteSur Dark + tombol bulat kiri.
+
+Kalau masih balik lagi ke symlink
+
+Kemungkinan lu ada tool yang nge-regenerate gtk-Dark.css & symlink, misalnya Gradience / adw-gtk3/adw-colors. Cek & netralisir:
+
+# cek kalau Gradience (flatpak) ada
+flatpak list | grep -i gradience || true
+
+# kalau ketemu, buka Gradience → Reset/Restore defaults (hapus override)
+# atau manual hapus lagi file2 di ~/.config/gtk-4.0 dan ulangi langkah di atas.
+
+
+Kalau udah coba ini dan Nautilus masih ngeyel, drop output ini ke gue biar gue bedah lanjut:
+
+ls -lah ~/.config/gtk-4.0
+head -n 20 ~/.config/gtk-4.0/gtk.css
+head -n 20 ~/.config/gtk-4.0/gtk-dark.css
+
+
+uninstall app center
+sudo snap remove snap-store
+sudo apt install gnome-software gnome-software-plugin-flatpak
+
+
+
+
+
