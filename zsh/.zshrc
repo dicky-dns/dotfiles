@@ -115,6 +115,7 @@ alias vendro='bin/build_helper'
 alias vendrojs='npm run format; npm run lint; npm run type-check'
 alias changephp='sudo update-alternatives --config php'
 alias brp='bin/rebuild_roles_and_permissions'
+alias c='clear'
 
 gpl() {
   git pull origin "$@"

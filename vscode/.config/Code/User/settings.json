@@ -1,9 +1,7 @@
 {
     "terminal.integrated.defaultProfile.linux": "zsh",
-    // "editor.fontFamily": "Fira Code",
-    // "editor.fontLigatures": true,
-"editor.fontFamily": "FiraCode Nerd Font, JetBrains Mono, monospace",
-"editor.fontLigatures": true,
+    "editor.fontFamily": "FiraCode Nerd Font, JetBrains Mono, monospace",
+    "editor.fontLigatures": true,
 
     "diffEditor.ignoreTrimWhitespace": true,
     "workbench.editor.empty.hint": "hidden",
@@ -16,7 +14,6 @@
         "php": true
     },
     "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
     "editor.minimap.enabled": false,
     "workbench.activityBar.location": "top",
     "workbench.panel.showLabels": false,
@@ -47,6 +44,7 @@
     "extensions.ignoreRecommendations": true,
     "diffEditor.hideUnchangedRegions.enabled": true,
     "window.menuBarVisibility": "toggle",
-    "chat.commandCenter.enabled": false
+    "chat.commandCenter.enabled": false,
+    "intelephense.diagnostics.undefinedMethods": false
 
 }
