@@ -1,0 +1,41 @@
+/* Container keseluruhan */
+.wpills-container {
+  padding: 6px 8px;
+}
+
+.wpills-containe:hover {
+  background-color: transparent !important;
+}
+
+/* Titik default */
+.wpill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.35);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    min-width 0.25s ease;
+}
+
+/* Workspace aktif = pill lonjong */
+.wpill-active {
+  min-width: 22px;   /* bikin lonjong */
+  height: 7px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 1.0);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    min-width 0.25s ease;
+}
+
+/* Hover halus dikit biar hidup */
+.wpill-dot:hover,
+.wpill-active:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: background-color 120ms ease;
+}
+
+

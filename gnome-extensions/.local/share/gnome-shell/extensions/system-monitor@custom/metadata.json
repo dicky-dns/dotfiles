@@ -1,0 +1,8 @@
+{
+  "uuid": "system-monitor@custom",
+  "name": "System Monitor (Custom)",
+  "description": "Panel system monitor: CPU, RAM, Swap, Temp, Upload/Download + checklist toggle.",
+  "shell-version": ["46"],
+  "version": 1,
+  "settings-schema": "org.gnome.shell.extensions.system-monitor-custom"
+}

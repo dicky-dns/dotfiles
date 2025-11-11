@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.system-monitor-custom"
+          path="/org/gnome/shell/extensions/system-monitor-custom/">
+
+    <key name="refresh-interval" type="u">
+      <default>1</default>
+      <summary>Refresh interval (seconds)</summary>
+      <description>How often to update the readings.</description>
+    </key>
+
+    <key name="show-cpu" type="b"><default>true</default></key>
+    <key name="show-mem" type="b"><default>true</default></key>
+    <key name="show-swap" type="b"><default>true</default></key>
+    <key name="show-temp" type="b"><default>true</default></key>
+
+    <!-- NEW: single toggle for network (down/up) -->
+    <key name="show-net" type="b">
+      <default>true</default>
+      <summary>Show Network</summary>
+      <description>Show combined download/upload rate.</description>
+    </key>
+
+    <key name="net-interfaces" type="as">
+      <default>[]</default>
+      <summary>Interfaces</summary>
+      <description>If empty, sum all non-loopback interfaces.</description>
+    </key>
+  </schema>
+</schemalist>

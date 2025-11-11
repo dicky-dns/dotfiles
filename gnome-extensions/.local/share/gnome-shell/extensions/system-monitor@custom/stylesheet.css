@@ -1,0 +1,39 @@
+.sm-container { 
+  spacing: 17px; 
+  padding: 6px; 
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ikon & fallback */
+.sm-icon { 
+  icon-size: 16px; 
+}
+.sm-fallback { 
+  font-size: 12px; 
+  margin-right: 4px; 
+}
+
+/* angka monospace + rata kanan */
+.sm-value {
+  font-size: 12px;
+  text-align: right;
+}
+
+/* LEBA R TETAP (anti goyang) */
+.sm-val-cpu,
+.sm-val-mem {          /* muat "100%" */
+  min-width: 25px;
+}
+
+.sm-val-swp {          /* muat "100%" */
+  min-width: 20px;
+}
+
+.sm-val-temp {         /* muat "100°C" */
+  min-width: 27px;
+}
+
+.sm-val-net {          /* muat "99 MB | 99 MB" / "9.9 MB | 9.9 MB" */
+  min-width: 84px;
+  white-space: pre;    /* jaga spasi ' | ' */
+}

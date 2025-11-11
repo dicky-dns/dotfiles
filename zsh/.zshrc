@@ -73,6 +73,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
 
 # User configuration
 
@@ -116,8 +117,9 @@ alias vendrojs='npm run format; npm run lint; npm run type-check'
 alias changephp='sudo update-alternatives --config php'
 alias brp='bin/rebuild_roles_and_permissions'
 alias c='clear'
+alias copydiff='git diff --cached | xclip -selection clipboard'
 
-gpl() {
+gpo() {
   git pull origin "$@"
 }
 
@@ -209,3 +211,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(zoxide init zsh)"export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/go/bin:$PATH"

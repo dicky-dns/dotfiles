@@ -1,0 +1,8 @@
+{
+  "uuid": "workspace-pills@custom",
+  "name": "Workspace Pills",
+  "description": "Indicator minimalis: pill untuk workspace aktif + dots untuk lainnya. Klik/scroll untuk pindah.",
+  "shell-version": ["46"],
+  "version": 1,
+  "url": "local"
+}
