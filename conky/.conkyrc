@@ -1,0 +1,30 @@
+conky.config = {
+  alignment = 'middle_middle',
+  background = true,
+  double_buffer = true,
+  use_xft = true,
+  update_interval = 1,
+
+  own_window = true,    
+  own_window_type = 'desktop',     
+  own_window_transparent = true,
+  own_window_argb_visual = true,
+  own_window_argb_value = 0,         
+  own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+  draw_shades = true,               
+  default_shade_color = '313131',
+  draw_outline = false,
+
+  minimum_width = 900,
+  minimum_height = 360,
+  gap_x = 0,
+  gap_y = 0,
+  override_utf8_locale = true,
+}
+
+conky.text = [[
+${alignc}${voffset 70}${font Alatsi:style=Regular:size=155}${time %H}.${time %M}${font}
+${alignc}${voffset -105}${font Driftline:style=Regular:size=59}${color 8ea7a4}${time %A}${font}
+${alignc}${voffset 45}${font Inter:style=Regular:size=15}${color white}${time %B %d, %Y}${font}
+]]
